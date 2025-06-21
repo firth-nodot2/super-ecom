@@ -1,5 +1,6 @@
 package org.rhydo.superecom.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.rhydo.superecom.model.Category;
 import org.rhydo.superecom.service.CategoryService;
 import org.springframework.http.HttpStatus;
@@ -11,12 +12,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
+@RequiredArgsConstructor
 public class CategoryController {
     private final CategoryService categoryService;
-
-    public CategoryController(CategoryService categoryService) {
-        this.categoryService = categoryService;
-    }
 
     @GetMapping("/public/categories")
     public ResponseEntity<List<Category>> getCategories() {
