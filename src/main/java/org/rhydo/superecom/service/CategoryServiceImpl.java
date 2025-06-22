@@ -8,6 +8,9 @@ import org.rhydo.superecom.exception.ResourceNotFoundException;
 import org.rhydo.superecom.model.Category;
 import org.rhydo.superecom.vo.CategoryVO;
 import org.rhydo.superecom.repository.CategoryRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,8 +22,11 @@ public class CategoryServiceImpl implements CategoryService {
     private final ModelMapper modelMapper;
 
     @Override
-    public CategoryVO getAllCategories() {
-        List<Category> categories = categoryRepository.findAll();
+    public CategoryVO getAllCategories(Integer pageNumber, Integer pageSize) {
+        Pageable pageDetails = PageRequest.of(pageNumber, pageSize);
+        Page<Category> categoryPage = categoryRepository.findAll(pageDetails);
+
+        List<Category> categories = categoryPage.getContent();
         if (categories.isEmpty()) {
             throw new APIException("No category created till now.");
         }
