@@ -2,6 +2,7 @@ package org.rhydo.superecom.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.rhydo.superecom.constant.AppConstants;
 import org.rhydo.superecom.dto.CategoryDTO;
 import org.rhydo.superecom.service.CategoryService;
 import org.rhydo.superecom.vo.CategoryVO;
@@ -17,8 +18,8 @@ public class CategoryController {
 
     @GetMapping("/public/categories")
     public ResponseEntity<CategoryVO> getAllCategories(
-            @RequestParam(name = "pageNumber") Integer pageNumber,
-            @RequestParam(name = "pageSize") Integer pageSize) {
+            @RequestParam(name = "pageNumber", defaultValue = AppConstants.PAGE_NUMBER) Integer pageNumber,
+            @RequestParam(name = "pageSize", defaultValue = AppConstants.PAGE_SIZE) Integer pageSize) {
         CategoryVO categoryVO = categoryService.getAllCategories(pageNumber, pageSize);
         return new ResponseEntity<>(categoryVO, HttpStatus.OK);
     }

@@ -12,4 +12,10 @@ import java.util.List;
 @NoArgsConstructor
 public class CategoryVO {
     private List<CategoryDTO> content;
+
+    private Integer pageNumber;
+    private Integer pageSize;
+    private Long TotalElements;
+    private Integer totalPages;
+    private boolean lastPage;
 }

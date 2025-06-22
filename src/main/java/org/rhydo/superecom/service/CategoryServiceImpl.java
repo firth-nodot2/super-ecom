@@ -37,6 +37,11 @@ public class CategoryServiceImpl implements CategoryService {
 
         CategoryVO categoryVO = new CategoryVO();
         categoryVO.setContent(categoryDTOS);
+        categoryVO.setPageNumber(categoryPage.getNumber());
+        categoryVO.setPageSize(categoryPage.getSize());
+        categoryVO.setTotalElements(categoryPage.getTotalElements());
+        categoryVO.setTotalPages(categoryPage.getTotalPages());
+        categoryVO.setLastPage(categoryPage.isLast());
 
         return categoryVO;
     }
