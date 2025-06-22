@@ -1,15 +1,15 @@
 package org.rhydo.superecom.service;
 
-import org.rhydo.superecom.model.Category;
+import org.rhydo.superecom.dto.CategoryDTO;
+import org.rhydo.superecom.vo.CategoryVO;
 
-import java.util.List;
 
 public interface CategoryService {
-    List<Category> getAllCategories();
+    CategoryVO getAllCategories();
 
-    void createCategory(Category category);
+    CategoryDTO createCategory(CategoryDTO categoryDTO);
 
-    String deleteCategory(Long categoryId);
+    CategoryDTO deleteCategory(Long categoryId);
 
-    Category updateCategory(Category category, Long categoryId);
+    CategoryDTO updateCategory(CategoryDTO categoryDTO, Long categoryId);
 }
