@@ -5,7 +5,7 @@ import org.rhydo.superecom.vo.CategoryVO;
 
 
 public interface CategoryService {
-    CategoryVO getAllCategories(Integer pageNumber, Integer pageSize);
+    CategoryVO getAllCategories(Integer pageNumber, Integer pageSize, String sortBy, String sortOrder);
 
     CategoryDTO createCategory(CategoryDTO categoryDTO);
 

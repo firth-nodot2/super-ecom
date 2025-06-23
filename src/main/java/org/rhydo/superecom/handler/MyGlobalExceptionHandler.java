@@ -2,6 +2,7 @@ package org.rhydo.superecom.handler;
 
 import org.rhydo.superecom.exception.APIException;
 import org.rhydo.superecom.exception.ResourceNotFoundException;
+import org.rhydo.superecom.vo.APIVO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -31,14 +32,14 @@ public class MyGlobalExceptionHandler {
     }
 
     @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<String> myResourceNotFoundException(ResourceNotFoundException e) {
-        String message = e.getMessage();
-        return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
+    public ResponseEntity<APIVO> myResourceNotFoundException(ResourceNotFoundException e) {
+        APIVO apiVO = new APIVO(e.getMessage(), false);
+        return new ResponseEntity<>(apiVO, HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(APIException.class)
-    public ResponseEntity<String> myAPIException(APIException e) {
-        String message = e.getMessage();
-        return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
+    public ResponseEntity<APIVO> myAPIException(APIException e) {
+        APIVO apiVO = new APIVO(e.getMessage(), false);
+        return new ResponseEntity<>(apiVO, HttpStatus.BAD_REQUEST);
     }
 }
