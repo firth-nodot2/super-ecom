@@ -41,11 +41,11 @@ public class User {
     @Column(name = "password")
     private String password;
 
-//    public User(String userName, String email, String password) {
-//        this.userName = userName;
-//        this.email = email;
-//        this.password = password;
-//    }
+    public User(String userName, String email, String password) {
+        this.userName = userName;
+        this.email = email;
+        this.password = password;
+    }
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
     @JoinTable(name = "user_role",
